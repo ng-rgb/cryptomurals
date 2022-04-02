@@ -7,6 +7,13 @@
 		<link rel="shortcut icon" href="favicon.ico">
     <title>CRYPTOMURALS</title>
 
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@latest/dist/flowbite.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    <script src="https://kit.fontawesome.com/1f8bc9fc91.js" crossorigin="anonymous"></script>
+
     <style>@import url("https://fonts.googleapis.com/css?family=Raleway:700|Roboto:300");
         body, html {
           position: relative;
@@ -101,8 +108,8 @@
        
 
   // Set the date we're counting down to
-  // var countDownDate = new Date("March 21, 2022 11:11:11").getTime();
-  var countDownDate = new Date("April 02, 2022 22:22:22").getTime();
+  var countDownDate = new Date("April 02, 2022 22:22:22").getTime();//LIVE
+  // var countDownDate = new Date("April 02, 2022 21:35:22").getTime();//test
   
   // Update the count down every 1 second
   var x = setInterval(function() {
@@ -120,20 +127,46 @@
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
   
     // Display the result in the element with id="demo"
-    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
   
     // If the count down is finished, write some text
     if (distance < 0) {
       clearInterval(x);
-      document.getElementById("demo").innerHTML = "EXPIRED";
+
+
+if (!localStorage.getItem("email")) {
+       console.log("there is no email in localstorage");
+       document.getElementById("demo").innerHTML = `JOIN CRYPTOMURALS'S DAO! <br>
+  <button type="button" class="btn btn-outline-primary  " id="submit_button" data-translate="upload" >Upload</button>
+  `;
+
+document.getElementById('submit_button').onclick = subscribeEmail;
+} else {
+ 
+document.getElementById("demo").innerHTML = `JOINED! <br>
+      <button type="button" class="btn btn-outline-success" disabled id="submit_button" data-translate="upload" ><i class="fa-solid fa-circle-check"></i> </button>
+      `;
+}
+
+
+    }else {
+      // document.getElementById("demo").innerHTML = `${days}d ${hours}h ${minutes}m  ${seconds}s `;
+
     }
+
+
+
+
   }, 1000);
         </script>
       
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.0/dist/sweetalert2.all.min.js"></script>
+
 
 </head>
 <body>
@@ -142,15 +175,7 @@
 <div class="hero">
     <div id="container-p5"></div>
     <div class="hero-content">
-      <!-- <h1><span class="highlight">CRYPTOMURALS</span> -->
-        <!-- <br><span>crypto art from the streets.<span></h1> -->
-      
-          <!-- <h1> -->
-            <!-- <img id="imgLogo" src="logo_cryptomurals.svg" /> -->
-          <!-- </h1> -->
-          <!-- <h1><span class="highlight"><img id="imgLogo" src="logo_cryptomurals.svg" /></span> -->
-        <!-- <br><span>crypto art from the streets.<span></h1> -->
-      <!-- <h2>Start collecting!</h2>     -->
+    
     </div>
   </div>
   
@@ -162,13 +187,7 @@
     <p class="time" id="demo"></p>
     <p class="join"><a href="Whitepaper_CRYPTOMURALS_v1_2022.pdf" target="_blank">WHITE PAPER</a></p>
       
-    <!-- <p class="text">
-      Landing proposals
-      <a href="l1.html">1 </a>
-      <a href="l2.html">2</a>
-      <a href="l3.html">3</a>
-      <a href="l4.html">4</a>
-      </p> -->
+    
 </div>
 
   <script>
@@ -416,16 +435,92 @@ delay: 1
 });
 
 tlOpening
-// .fromTo('.hero h1 span:nth-child(1)', 1.8, {autoAlpha:0, y:20}, {autoAlpha: 1, y:0, ease: Power2.easeOut},  2.2)
 .fromTo('#imgLogo', 1.8, {autoAlpha:0, y:20}, {autoAlpha: 1, y:0, ease: Power2.easeOut},  2.2)
 .fromTo('.goinglive', 1.8, {autoAlpha:0, y:40}, {autoAlpha: 1, y:0, ease: Power2.easeOut},  2.4)
-// .fromTo('.hero h1 span:nth-child(3)', 1.8, {autoAlpha:0, y:40}, {autoAlpha: 1, y:0, ease: Power2.easeOut},  2.4)
 .fromTo('.time', 1, {autoAlpha: 0, y:20},{autoAlpha: 1, y:0}, 3.2)
-// .fromTo('.hero h2', 1, {autoAlpha: 0, y:20},{autoAlpha: 1, y:0}, 3.2)
 .fromTo('.join', 1, {autoAlpha: 0, y:20},{autoAlpha: 1, y:0}, 4.2)
 
 ;
 </script>
   
+
+<script>
+const serverUrl = "https://4awmj3mczjmy.usemoralis.com:2053/server";
+ const appId = "MGGUY01w6PMlQRQeXarH98KWo9PDLHUNI3eH5ZOx";
+   
+ let init = async () => {
+
+ try {
+    await Moralis.start({ serverUrl, appId });
+	}
+  
+	catch (error) {
+	alert(error.message);
+	}
+};
+
+
+init();
+
+// if (!localStorage.getItem("email")) {
+//        console.log("there is no email in localstorage");
+//       document.getElementById("demo").innerHTML = `JOINED! <br>
+//       <button type="button" class="btn btn-outline-success" disabled id="submit_button" data-translate="upload" ><i class="fa-solid fa-circle-check"></i> </button>
+//       `;
+// } else {
+  
+// }
+
+subscribeEmail = async () => {
+
+  const { value: email } = await Swal.fire({
+  title: 'Subscribe to be the first to join the CRYPTOMURALS DAO',
+  input: 'email',
+  inputLabel: 'Your email address',
+  inputPlaceholder: 'Enter your email address'
+})
+
+if (email) {
+  localStorage.setItem('email', email);
+
+  const user = new Moralis.User();
+user.set("username", email);
+user.set("password", "cryptomuralsLaunch");
+user.set("email", email);
+
+
+// other fields can be set just like with Moralis.Object
+// user.set("phone", "415-392-0202");
+try {
+  await user.signUp();
+  // Hooray! Let them use the app now.
+} catch (error) {
+  // Show the error message somewhere and let the user try again.
+  alert("Error: " + error.code + " " + error.message);
+}
+
+
+  Swal.fire({
+        title: 'Bravo!',
+		text: `We sent you and Email to ${email}. You will be hearing from us soon! `,
+		icon: "success",
+          imageUrl: 'img/undraw_winners_re_wr1l.svg',
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: 'well minted!',
+        
+      });
+
+      
+      document.getElementById("demo").innerHTML = `JOINED! <br>
+      <button type="button" class="btn btn-outline-success" disabled id="submit_button" data-translate="upload" ><i class="fa-solid fa-circle-check"></i> </button>
+      `;
+
+      
+  // Swal.fire(`Entered email: ${email}`)
+}
+
+}
+</script>
 </body>
 </html>
