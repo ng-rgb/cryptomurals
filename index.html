@@ -137,14 +137,14 @@
 if (!localStorage.getItem("email")) {
        console.log("there is no email in localstorage");
        document.getElementById("demo").innerHTML = `JOIN CRYPTOMURALS'S DAO! <br>
-  <button type="button" class="btn btn-outline-primary  " id="submit_button" data-translate="upload" >Upload</button>
+  <button type="button" class="btn btn-outline-primary  " id="submit_button" data-translate="join" >Join</button>
   `;
 
 document.getElementById('submit_button').onclick = subscribeEmail;
 } else {
  
 document.getElementById("demo").innerHTML = `JOINED! <br>
-      <button type="button" class="btn btn-outline-success" disabled id="submit_button" data-translate="upload" ><i class="fa-solid fa-circle-check"></i> </button>
+      <button type="button" class="btn btn-outline-success" disabled id="submit_button" data-translate="join" ><i class="fa-solid fa-circle-check"></i> </button>
       `;
 }
 
@@ -472,7 +472,7 @@ init();
 // if (!localStorage.getItem("email")) {
 //        console.log("there is no email in localstorage");
 //       document.getElementById("demo").innerHTML = `JOINED! <br>
-//       <button type="button" class="btn btn-outline-success" disabled id="submit_button" data-translate="upload" ><i class="fa-solid fa-circle-check"></i> </button>
+//       <button type="button" class="btn btn-outline-success" disabled id="submit_button" data-translate="join" ><i class="fa-solid fa-circle-check"></i> </button>
 //       `;
 // } else {
   
@@ -520,7 +520,7 @@ try {
 
       
       document.getElementById("demo").innerHTML = `JOINED! <br>
-      <button type="button" class="btn btn-outline-success" disabled id="submit_button" data-translate="upload" ><i class="fa-solid fa-circle-check"></i> </button>
+      <button type="button" class="btn btn-outline-success" disabled id="submit_button" data-translate="join" ><i class="fa-solid fa-circle-check"></i> </button>
       `;
 
       
