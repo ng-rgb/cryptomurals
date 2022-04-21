@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico">
+    <title>CRYPTOMURALS</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@latest/dist/flowbite.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+
+    <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    <script src="https://kit.fontawesome.com/1f8bc9fc91.js" crossorigin="anonymous"></script>
+
+    <style>@import url("https://fonts.googleapis.com/css?family=Raleway:700|Roboto:300");
+        body, html {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          font-family: "Roboto", serif;
+          background: #000529;
+          overflow: hidden;
+        }
+        
+        .hero {
+          display: flex;
+          height: 100%;
+          align-items: center;
+          color: white;
+        }
+        
+        .hero-content {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 30px 60px 1em;
+        }
+        
+        h1 {
+          font-family: "Ralewey", sans-serif;
+          color: white;
+          font-size: 4vw;
+          line-height: 1;
+          letter-spacing: -0.05em;
+          z-index: 10;
+          margin-bottom: 32px;
+        }
+        h1 span {
+          display: inline-block;
+        }
+        
+        h2 {
+          font-size: 20px;
+          letter-spacing: 0.02em;
+        }
+        
+        #container-p5 {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          opacity: 0;
+          z-index: 0;
+        }
+        
+        .highlight {
+          color: #2746ff;
+        }
+        .highlight img{
+          width: 500px;
+        }
+        #clock {
+        font-family: "Share Tech Mono", monospace;
+        color: #ffffff;
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: #daf6ff;
+        text-shadow: 0 0 20px #0aafe6, 0 0 20px rgba(10, 175, 230, 0);
+      }
+      #clock .time {
+        letter-spacing: 0.05em;
+        font-size: 60px;
+        padding: 5px 0;
+      }
+      #clock .date {
+        letter-spacing: 0.1em;
+        font-size: 24px;
+      }
+      #clock .text {
+        letter-spacing: 0.1em;
+        font-size: 12px;
+        padding: 20px 0 0;
+      }
+
+    
+        </style>
+
+
+<script>
+       
+       
+       
+
+  // Set the date we're counting down to
+  var countDownDate = new Date("April 02, 2022 22:22:22").getTime();//LIVE
+  // var countDownDate = new Date("April 02, 2022 21:35:22").getTime();//test
+  
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+  
+    // Get today's date and time
+    var now = new Date().getTime();
+  
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+  
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+    // Display the result in the element with id="demo"
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
+  
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+
+
+if (!localStorage.getItem("email")) {
+       console.log("there is no email in localstorage");
+       document.getElementById("demo").innerHTML = `JOIN CRYPTOMURALS'S DAO! <br>
+  <button type="button" class="btn btn-outline-primary  " id="submit_button" data-translate="join" >Join</button>
+  `;
+
+document.getElementById('submit_button').onclick = subscribeEmail;
+} else {
+ 
+document.getElementById("demo").innerHTML = `JOINED! <br>
+      <button type="button" class="btn btn-outline-success" disabled id="submit_button" data-translate="join" ><i class="fa-solid fa-circle-check"></i> </button>
+      `;
+}
+
+
+    }else {
+      // document.getElementById("demo").innerHTML = `${days}d ${hours}h ${minutes}m  ${seconds}s `;
+
+    }
+
+
+
+
+  }, 1000);
+        </script>
+      
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.0/dist/sweetalert2.all.min.js"></script>
+
+
+</head>
+<body>
+    <!-- this is not meant to be responsive yet, plz watch it fullscreen for a better experience -->
+
+<div class="hero">
+    <div id="container-p5"></div>
+    <div class="hero-content">
+    
+    </div>
+  </div>
+  
+
+  <div id="clock">
+    <img id="imgLogo" src="logo_cryptomurals.svg" />
+    <p class="goinglive">going live on April 2nd!!!</p>
+    
+    <p class="time" id="demo"></p>
+    <p class="join"><a href="Whitepaper_CRYPTOMURALS_v1_2022.pdf" target="_blank">WHITE PAPER</a></p>
+      
+    
+</div>
+
+  <script>
+    var btcPath = "forp5.jpg";
+
+var sketch = function(p){
+
+var containerWidth = $('#container-p5').width();
+var containerHeight = $('#container-p5').height();
+
+/* eslint-disable */
+p5.disableFriendlyErrors = true;
+var btc;
+var Stars = [];
+var smallSize = 80;
+var scaleFactor = (containerWidth * 0.35) / smallSize;
+var starsColor = ['#0d2a75', '#1d5cd2', '#1c3498'];
+var translate = {
+x: containerWidth / 2,
+y: (containerHeight - (containerWidth * 0.35)) / 2
+};
+var positions = {
+'btc' : []
+};
+
+var RandomStars = [];
+
+function translatePoint(vector){
+var newX = (vector.x * scaleFactor) + translate.x;
+var newY = (vector.y * scaleFactor) + translate.y;
+var newVec = p.createVector(newX, newY);
+return newVec;
+}
+
+
+var center = translatePoint(p.createVector(smallSize / 2, smallSize / 2));
+
+var bgColor = p.color('#000529');
+
+
+
+// PARTICLE OF THE IMAGE
+function Star(vector){
+this.x = vector.x;
+this.y = vector.y;
+this.pos = p.createVector(p.random(containerWidth * -1.2, containerWidth * 1.2), p.random(containerWidth * -1.2, containerHeight * 1.2)); // initial position
+this.target = p.createVector(this.x,this.y);
+this.color = p.random(starsColor);
+this.size = p.random(2,4);
+this.vel = p.createVector(p.random(-5,6), p.random(-4,6));
+this.acc = p.createVector();
+this.maxSpeed = 10;
+this.maxForce = 2;
+this.weight = p.random(0.5, 2.5);
+this.allowRepulse = false;
+this.goingCenter = false;
+
+this.alpha;
+}
+
+Star.prototype.update = function(){
+this.pos.add(this.vel);
+this.vel.add(this.acc);
+this.alpha;
+this.acc.mult(0);
+}
+
+Star.prototype.move = function(){
+var attract = this.attract(this.target);
+this.appForce(attract);
+
+var mouse = p.createVector(p.mouseX, p.mouseY);
+var repulse = this.repulse(mouse);
+this.appForce(repulse);
+
+}
+
+Star.prototype.appForce = function(value){
+this.acc.add(value);
+}
+
+Star.prototype.modAlpha = function(){
+var desired = p5.Vector.sub(this.target, this.pos);
+var d = desired.mag();
+var opacity = p.map(d, 0, 800, 255, 0);
+return opacity;
+}
+
+Star.prototype.attract = function(target){
+var desired = p5.Vector.sub(target, this.pos);
+var d = desired.mag(); // distance between target and position
+if( d < 100 && !this.goingCenter){
+this.vel.limit(10);
+if( d < 10 && !(this.allowRepulse)){
+var G = 70;
+var distancesq = desired.magSq();
+
+var force = distancesq / G;
+desired.setMag(force * this.weight);
+this.vel.limit(0.7);
+return desired;
+}
+} else {
+var G = 400000;
+var distancesq = desired.magSq();
+var force = G / distancesq;
+desired.setMag(force);
+this.vel.limit(7);
+return desired;
+}
+}
+
+Star.prototype.repulse = function(target){
+var desired = p5.Vector.sub(target, this.pos);
+var d = desired.mag();
+if(d < 80) {
+this.allowRepulse = true;
+var distancesq = desired.magSq();
+var force = (500 / distancesq) * this.weight;
+desired.setMag(-force);
+return desired;					
+}
+else {
+this.allowRepulse = false;
+return p.createVector(0,0);
+}
+}
+
+Star.prototype.render = function(){
+p.noStroke();
+var color = p.color(this.color);
+color.setAlpha(this.modAlpha());
+p.fill(color);
+p.ellipse(this.pos.x, this.pos.y, this.size, this.size);					
+}
+
+
+
+
+
+// PARTICLE MOVING RANDOMLY
+function RandomStar(){
+this.pos = p.createVector(p.random(containerWidth), p.random(containerHeight));
+this.vel = p.createVector(p.random(-3	, 3	), p.random(-3	, 3	));
+this.weight = p.random(0.5,1.5);
+this.size = p.random(2,4);
+this.corner = p.createVector(0,0);
+this.color = p.color(p.random(starsColor));
+this.alpha;
+}
+
+RandomStar.prototype.modAlpha = function(dist){
+var alpha = p.map(dist, 0, containerWidth * 0.8, 0, 255);
+return alpha;
+
+}
+
+RandomStar.prototype.checkBoundaries = function(){
+if((this.pos.x > containerWidth) || (this.pos.x < 0)){
+this.vel.x = this.vel.x * (-1);
+}
+if((this.pos.y > containerHeight) || (this.pos.y < 0)){
+this.vel.y = this.vel.y * (-1);
+}
+}
+
+RandomStar.prototype.update = function(){
+this.checkBoundaries();
+this.pos.add(this.vel);
+
+var dist = this.pos.sub(this.corner);
+this.alpha = this.modAlpha(dist.mag());
+}
+
+RandomStar.prototype.render = function(){
+var c = this.color;
+c.setAlpha(this.alpha);
+p.fill(c);
+p.ellipse(this.pos.x, this.pos.y, this.size, this.size);
+}
+
+// CREATE RANDOMSTAR
+for( var i=0; i< 150; i++){
+var randStar = new RandomStar();
+RandomStars.push(randStar);
+}
+
+
+
+
+
+p.setup = function(){
+p.createCanvas(containerWidth, containerHeight, 'WEBGL');
+p.pixelDensity(1);
+p.background(bgColor);
+var btc = p.loadImage(btcPath, function(img) {
+// p.image(img, 0, 0);
+btc.resize(smallSize,smallSize);
+btc.loadPixels();
+for( var x=0; x < btc.width; x++){
+for( var y=0; y < btc.height; y++){
+  var index = (x + y * btc.width) * 4;
+  if(btc.pixels[index] < 200){ // if channel red < 200 == black in this case
+    if(Math.round(p.random(100)) < 70){ //get only % of the points, randomly
+      var initVec = p.createVector(x,y);
+      var pos = translatePoint(initVec);
+      positions.btc.push(pos);
+      Stars.push(new Star(pos));									
+    }
+  }
+}
+}
+}); // close callback loader image
+p.pixelDensity();				
+}
+
+p.draw = function(){
+p.background(bgColor);
+for(var k = 0; k < Stars.length; k++){
+Stars[k].move();					
+Stars[k].update();					
+Stars[k].render();
+}
+for(var j = 0; j < RandomStars.length; j++){
+RandomStars[j].update();
+RandomStars[j].render();
+}
+}
+
+p.windowResized = function(){
+containerWidth = $('#container-p5').width();
+containerHeight = $('#container-p5').height();
+p.resizeCanvas(containerWidth, containerHeight);
+}
+
+};
+
+var heroSketch = new p5(sketch, window.document.getElementById('container-p5'));
+
+var tlOpening = new TimelineMax({ 
+onStart: function(){
+TweenMax.fromTo('#container-p5', 8, {autoAlpha:0}, {autoAlpha:1})
+},
+delay: 1
+});
+
+tlOpening
+.fromTo('#imgLogo', 1.8, {autoAlpha:0, y:20}, {autoAlpha: 1, y:0, ease: Power2.easeOut},  2.2)
+.fromTo('.goinglive', 1.8, {autoAlpha:0, y:40}, {autoAlpha: 1, y:0, ease: Power2.easeOut},  2.4)
+.fromTo('.time', 1, {autoAlpha: 0, y:20},{autoAlpha: 1, y:0}, 3.2)
+.fromTo('.join', 1, {autoAlpha: 0, y:20},{autoAlpha: 1, y:0}, 4.2)
+
+;
+</script>
+  
+
+<script>
+  // testnet
+// const serverUrl = "https://4awmj3mczjmy.usemoralis.com:2053/server";
+//  const appId = "MGGUY01w6PMlQRQeXarH98KWo9PDLHUNI3eH5ZOx";
+   
+// mainnet
+ 
+ const serverUrl = "https://aqghshlssa2a.usemoralis.com:2053/server";
+ const appId = "EkiUOmavt87ypbQOD3CXHWL1iej0YDVFh3Im1CWK";
+   
+console.log('server: ', serverUrl, appId)
+ let init = async () => {
+
+ try {
+    await Moralis.start({ serverUrl, appId });
+	}
+  
+	catch (error) {
+	alert(error.message);
+	}
+};
+
+
+init();
+
+// if (!localStorage.getItem("email")) {
+//        console.log("there is no email in localstorage");
+//       document.getElementById("demo").innerHTML = `JOINED! <br>
+//       <button type="button" class="btn btn-outline-success" disabled id="submit_button" data-translate="join" ><i class="fa-solid fa-circle-check"></i> </button>
+//       `;
+// } else {
+  
+// }
+
+subscribeEmail = async () => {
+
+  const { value: email } = await Swal.fire({
+  title: 'Subscribe to be the first to join the CRYPTOMURALS DAO',
+  input: 'email',
+  inputLabel: 'Your email address',
+  inputPlaceholder: 'Enter your email address'
+})
+
+if (email) {
+  localStorage.setItem('email', email);
+
+  const user = new Moralis.User();
+user.set("username", email);
+user.set("password", "cryptomuralsLaunch");
+user.set("email", email);
+
+
+// other fields can be set just like with Moralis.Object
+// user.set("phone", "415-392-0202");
+try {
+  await user.signUp();
+  // Hooray! Let them use the app now.
+} catch (error) {
+  // Show the error message somewhere and let the user try again.
+  alert("Error: " + error.code + " " + error.message);
+}
+
+
+  Swal.fire({
+        title: 'Bravo!',
+		text: `We sent you and Email to ${email}. You will be hearing from us soon! `,
+		icon: "success",
+          imageUrl: 'img/undraw_winners_re_wr1l.svg',
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: 'well minted!',
+        
+      });
+
+      
+      document.getElementById("demo").innerHTML = `JOINED! <br>
+      <button type="button" class="btn btn-outline-success" disabled id="submit_button" data-translate="join" ><i class="fa-solid fa-circle-check"></i> </button>
+      `;
+
+      
+  // Swal.fire(`Entered email: ${email}`)
+}
+
+}
+</script>
+</body>
+</html>

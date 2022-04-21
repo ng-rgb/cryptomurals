@@ -1,0 +1,190 @@
+.main-navbar {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100vh;
+    background-image: linear-gradient(90deg, rgba(51,51,51,1) 0%, rgba(38,38,38,1) 44%, rgba(0,0,0,1) 100%);
+}
+
+.nav-layout {
+    display: flex;
+    flex-direction: row;
+}
+
+.hidden {
+    visibility: hidden;
+    display: none;
+}
+
+.options-menu {
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+  }
+  
+  .btn-connect-wallet:hover {
+    box-shadow: 0 0 2px 2px #fff, /* inner white */ 0 0 4px 4px #f0f,
+      /* middle magenta */ 0 0 6px 6px #0ff; /* outer cyan */
+  }
+  
+  .btn-connect-wallet {
+    width: 200px;
+    height: 50px;
+    font-size: 17px;
+  }
+  
+  .btn-connected-container {
+    width: 200px;
+  }
+  
+  .hamburguer-menu-container {
+    display: flex;
+  }
+  
+  .hamburguer-menu {
+    width: 200px;
+    height: 50px;
+  }
+  
+  .circle-main {
+    font-size: 40px;
+  }
+  
+  .circle-select {
+    font-size: 50px;
+  }
+  
+  .link-city {
+    font-size: 22px;
+  }
+  
+  .logo-cryptomurals {
+    content: url('./resources/logo_cryptomurals.svg');
+  }
+  
+  .nav-layout {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .city-layout {
+    display: block;
+  }
+  
+  .btn-connect-container {
+    margin: 10px;
+  }
+  
+  .btn-connected {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .container-icon-social-networks {
+    text-align: left;
+    position: relative;
+  }
+  
+  .icon-social-networks {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: -48px;
+  }
+  
+  .content-unlock {
+    display: none;
+  }
+  
+  .content-unlock-hidden {
+    display: none;
+  }
+
+  .size-element {
+    width: auto;
+  }
+  
+  @media screen and (min-width: 0px) and (max-width: 768px) {
+
+    .size-element {
+      width: 200px;
+    }
+
+    .btn-connect-wallet {
+      width: 150px;
+      height: 40px;
+      font-size: 15px;
+    }
+  
+    .hamburguer-menu-container {
+      display: block;
+      max-width: 200px;
+      width: 100px;
+      height: 30px;
+    }
+  
+    .hamburguer-menu {
+      align-self: center;
+      width: 100%;
+    }
+  
+    .circle-main {
+      font-size: 32px;
+    }
+  
+    .circle-select {
+      font-size: 25px;
+    }
+  
+    .link-city {
+      font-size: 20px;
+    }
+  
+    .logo-cryptomurals {
+      content: url('./resources/cryptomurals_mobile.png');
+      padding-top: 15px;
+      width: 240px;
+    }
+  
+    .nav-layout {
+      display: flex;
+    }
+  
+    .city-layout {
+      display: none;
+    }
+  
+    .btn-connected {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .container-icon-social-networks {
+      text-align: center;
+    }
+  
+    .icon-social-networks {
+      width: 32px;
+      height: 32px;
+      position: initial;
+    }
+  
+    .content-unlock {
+      display: initial;
+    }
+  }
+  
+  @media screen and (min-width: 769px) and (max-width: 980px) {
+    .circle-main {
+      font-size: 33px;
+    }
+  
+    .circle-select {
+      font-size: 30px;
+    }
+  
+    .link-city {
+      font-size: 22px;
+    }
+  }
+  

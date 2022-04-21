@@ -1,0 +1,135 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-image: linear-gradient(
+    90deg,
+    rgba(51, 51, 51, 1) 0%,
+    rgba(38, 38, 38, 1) 44%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Monda';
+  src: url('./resources/fonts/Monda/Monda-Regular.ttf');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MondaBold';
+  src: url('./resources/fonts/Monda/Monda-Regular.ttf');
+  font-style: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monoton';
+  src: url('./resources/fonts/Monoton-Regular.ttf');
+  font-style: normal;
+  font-display: swap;
+}
+
+.menu-main {
+  animation: deploy 4s infinite linear;
+}
+
+@keyframe deploy {
+  0% {
+    opacity: 0;
+    transform: translate(0px, 0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(100px, 100px);
+  }
+}
+
+.white-grad {
+  color: #313149;
+  padding: 20px;
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  z-index: 0;
+  width: 60vw;
+  height: 60vw;
+  min-width: 380px;
+  min-height: 380px;
+  max-height: 600px;
+  max-width: 600px;
+  background-color: linear-gradient(
+    90deg,
+    rgba(46, 167, 227, 1) 0%,
+    rgba(46, 167, 227, 1) 10%,
+    rgba(250, 4, 254, 1) 90%
+  );
+  border-radius: 50%;
+}
+
+.white-grad:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  padding: 7px;
+  border-radius: 50%;
+  background: linear-gradient(
+    to right,
+    rgba(46, 167, 227, 1),
+    rgba(250, 4, 254, 1)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.white-grad-select {
+  background-image: radial-gradient(
+    circle,
+    rgba(79, 143, 106, 1) 0%,
+    rgba(55, 135, 127, 1) 26%,
+    rgba(30, 127, 147, 1) 100%
+  );
+}
+
+.white-grad-select:before {
+  background: linear-gradient(
+    to right,
+    rgba(121, 245, 173, 1),
+    rgba(11, 205, 247, 1)
+  );
+}
+
+.lines {
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+  animation: draw 5s linear forwards;
+}
+
+.lines-mobile {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: draw 5s linear forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
