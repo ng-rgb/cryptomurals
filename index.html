@@ -11,6 +11,51 @@
   <link rel="stylesheet" href="./main.css">
   <link rel="stylesheet" href="./hamburger.css">
 
+  <style>
+    /* fixes */
+    /* .mcontent.isOpen  */
+    .mn{
+    transition: transform 0.3s;
+
+    }
+   .mn.navIsOpen{
+      transform: scale(0.8);
+    opacity: 0.6;
+    transition: transform 0.3s;
+}
+    #main-navbar{
+      width: 100vw!important
+      overflow:hidden;
+      
+    }
+    #addr{
+    font-size: 0.81em;
+    margin-left: 30px;
+    margin-right: 30px;
+    line-height: 80px;
+    }
+    #addrCont{
+      width:100%
+    }
+    /* @media (max-width: 680px){ */
+    @media (max-width: 768px){
+    #navContainer{
+    /* background-color: red; */
+    flex-direction:column!important;
+    /* margin-left: 0!important; */
+  }
+  .hamburguer-menu-container{
+    position: absolute;
+    top: 40px;
+  }
+
+  #addr{
+    line-height: 42px;
+    }
+
+
+    }
+  </style>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.0/dist/sweetalert2.all.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
   <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
@@ -18,7 +63,7 @@
 
 <body>
   <div id="main-navbar">
-    <div style="margin-left: 30px;margin-right: 30px;flex-direction:row" class='nav-layout'>
+    <div  id='navContainer' style="margin-left: 30px;margin-right: 30px;flex-direction:row" class='nav-layout'>
       <div style="display: flex;flex: 1" class="menu">
         <div style="display: flex" class='hamburguer-menu-container'>
           <div style="align-self: center; width: 100px;" class='hamburger hamburger--vortex-r hamburguer-menu'>
@@ -26,16 +71,19 @@
               <div class='hamburger-inner'></div>
             </div>
           </div>
+
           <div style="
                         margin: auto;
                         color: white;
                         text-decoration: underline;
                         font-family: Monoton;
-                        " class='city-layout'>
+                        " 
+            class=' city-layout'>
             CITY
           </div>
+
         </div>
-        <div style="display: flex; justify-content: center; flex: 1">
+        <div  class='' style="display: flex; justify-content: center; flex: 1">
           <div style="justify-content: center">
             <img class='logo-cryptomurals' width='100%' height='100px' src="./resources/logo_cryptomurals.svg"
               alt="logo cryptomurals" />
@@ -57,7 +105,8 @@
 
 
       <!-- LOGIN/OUT -->
-      <div style=" display: flex; flex-direction: row; margin: 0 auto; justify-content: flex-end; text-align: center; width: 200px;">
+      <!-- <div style=" display: flex; flex-direction: row; margin: 0 auto; justify-content: flex-end; text-align: center; width: 200px;"> -->
+        <div style=" display: flex; flex-direction: row; margin: 0 auto; justify-content: flex-end; text-align: center;">
         <div id="logg" style="align-self: center; width: auto" class='btn-connect-container'>
 
           <!-- <div style="width:auto;height: 50px" class="btn-disconnect hidden" onclick="disconnectWallet()">
@@ -73,7 +122,7 @@
     </div>
 
 
-    <main style="height: 100%; flex-direction: column; display: flex">
+    <main class='mn' style="height: 100%; flex-direction: column; display: flex">
       <div style="display: flex; flex: 1">
         <div style="margin: auto">
           <div class="white-grad">
@@ -194,15 +243,19 @@
   <script>
     const _btnHamburguerMenu = document.querySelector('.hamburguer-menu');
     const menuMain = document.querySelector('.menu-main');
+    const main = document.querySelector('.mn');
     const cities = ['THE WORLD','PARIS', 'ROMA'];
     let city = 'THE WORLD';
     let resolutionSmall = false;
     let showOptions = false;
-
+    
 
     _btnHamburguerMenu.addEventListener('click', (e) => {
+      console.log('nav clicked');
       _btnHamburguerMenu.classList.toggle('is-active');
       menuMain.classList.toggle('hidden');
+    main.classList.toggle('navIsOpen');
+
     });
 
     // const _btnConnectWallet = document.querySelector('.btn-connect-wallet');
@@ -265,9 +318,14 @@ async function login() {
 
       // document.getElementById("logg").innerHTML = "<p class='loged btn-grad-inv'>" + shortAddr + " <i class='logout fa fa-sign-out' aria-hidden='true' onclick='event.stopPropagation();logOut()'></i> </p> <p style='display:none' class='responsiveloged btn-grad-inv'> <i class='logout fa fa-sign-out' aria-hidden='true' onclick='event.stopPropagation();logOut()'></i> </p>";
 
-      document.getElementById("logg").innerHTML=`  <div style="width:auto;height: 50px" class="" onclick="logOut()">
-            <div style="border-radius: 50%; background-image: linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgba(250,4,254,1) 90%); color: white;" class='btn-connected'></div>
-            <div style="font-family:Monda; color: white"> ${shortAddr}</div>
+      // document.getElementById("logg").innerHTML=`  <div style="width:auto;height: 50px" class="" onclick="logOut()">
+      //       <div style="border-radius: 50%; background-image: linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgba(250,4,254,1) 90%); color: white;" class='btn-connected'></div>
+      //       <div style="font-family:Monda; color: white"> ${shortAddr}</div>
+      //     </div>`
+          document.getElementById("logg").innerHTML=`  <div style="width:auto;height: 50px" class="" onclick="logOut()">
+            <div id='addrCont' style="border-radius: 50%; background-image: linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgba(250,4,254,1) 90%); color: white;" class='btn-connected'>
+              <div id='addr' style="font-family:Monda; color: white"> ${shortAddr}</div>
+              </div>
           </div>`
 
       console.log('User address: ', userAddress);
@@ -283,8 +341,9 @@ async function login() {
     // var shortAddr = x.substring(0, 8) + "...";
     var shortAddr = x.substring(0, 6) + "..."+x.substring(38, 42);
     document.getElementById("logg").innerHTML=`  <div style="width:auto;height: 50px" class="" onclick="logOut()">
-            <div style="border-radius: 50%; background-image: linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgba(250,4,254,1) 90%); color: white;" class='btn-connected'></div>
-            <div style="font-family:Monda; color: white"> ${shortAddr}</div>
+            <div id='addrCont' style="border-radius: 50%; background-image: linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgba(250,4,254,1) 90%); color: white;" class='btn-connected'>
+              <div id='addr' style="font-family:Monda; color: white"> ${shortAddr}</div>
+              </div>
           </div>`
 
     // document.getElementById("logg").innerHTML = "<p class='loged btn-grad-inv'>" + shortAddr + " <i class='logout fa fa-sign-out' aria-hidden='true' onclick='event.stopPropagation();logOut()'></i> </p>";

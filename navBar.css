@@ -141,7 +141,8 @@
     }
   
     .logo-cryptomurals {
-      content: url('./resources/cryptomurals_mobile.png');
+      /* content: url('./resources/cryptomurals_mobile.png'); */
+      content: url('./resources/cryptomurals_mobile.svg');
       padding-top: 15px;
       width: 240px;
     }
