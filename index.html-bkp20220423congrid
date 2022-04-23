@@ -11,20 +11,40 @@
   <link rel="stylesheet" href="./main.css">
   <link rel="stylesheet" href="./hamburger.css">
 
+
+
   <style>
     /* fixes */
-  
-#logo, #logbutton, #main{
+    /* .mcontent.isOpen  */
+    /* #navContainer, #main{ */
+    #logo, #logbtutton, #main{
     transition: transform 0.3s;
 
     }
+    #navContainer{
+      display: grid;
+  /* grid-template-columns: 1fr repeat(3, auto) 1fr; */
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-column-gap: 5px;
+  justify-items: center;
+  grid-template-areas: "city logo logbutton";
+    }
 
-    .navIsOpen{
+    #city{
+      grid-area: city;
+    }
+    #logo{
+      grid-area: logo;
+    }
+    #logbutton{
+      grid-area: logbutton;
+    }
+
+   .navIsOpen{
       transform: scale(0.8);
     opacity: 0.6;
     transition: transform 0.3s;
 }
-
     #main-navbar{
       width: 100vw!important
       overflow:hidden;
@@ -49,7 +69,6 @@
   .hamburguer-menu-container{
     position: absolute;
     top: 40px;
-    z-index: 1;
   }
 
   #addr{
@@ -65,114 +84,84 @@
 </head>
 
 <body>
-  <div id="main-navbar">
-    <div  id='navContainer' style="margin-left: 30px;margin-right: 30px;flex-direction:row" class='nav-layout'>
-      <div style="display: flex;flex: 1" class="menu">
-        
-        <div style="display: flex" class='hamburguer-menu-container'>
-          
-          <div style="align-self: center; width: 100px;" class='hamburger hamburger--vortex-r hamburguer-menu'>
-            <div class='hamburger-box'>
-              <div class='hamburger-inner'></div>
+<!-- MENU -->
+<div style="display: inline-flex;flex: 1" class="menu">
+  
+      <!-- 1 icono y city -->
+      <!-- <div style="display: flex" class='hamburguer-menu-container'>
+        <div style="align-self: center; width: 100px;" class='hamburger hamburger--vortex-r hamburguer-menu'>
+          <div class='hamburger-box'>
+            <div class='hamburger-inner'></div>
+          </div>
+        </div>
+        <div style=" margin: auto; color: white; text-decoration: underline; font-family: Monoton; " class='mn city-layout'> CITY </div>
+      </div> -->
+
+    <!-- 2 menu contents -->
+      <div style=" position: fixed; top: 90px; left: 0px; width: 600px; z-index: 999" class="menu-main hidden">
+        <div class='options-menu'>Home</div>
+        <div class='options-menu'><a href="https://gardens.1hive.org/#/matic/garden/0x963d4a1cd9fb345a624e46c9470df572f0b35a72" target="_blank">Join the DAO</a></div>
+        <div class='options-menu'><a href="Whitepaper_CRYPTOMURALS_v1_2022.pdf" target="_blank">WHITE PAPER</a></div>
+      </div>
+
+</div>
+
+
+<!-- HEAD -->
+  <!-- <div id="main-navbar"> -->
+   
+  <div  id='navContainer'  class=''>
+
+    <div id="city" style="display: flex" class='hamburguer-menu-container'>
+      <div style="align-self: center; width: 100px;" class='hamburger hamburger--vortex-r hamburguer-menu'>
+        <div class='hamburger-box'>
+          <div class='hamburger-inner'></div>
+        </div>
+      </div>
+      <div style=" margin: auto; color: white; text-decoration: underline; font-family: Monoton; " class='mn city-layout'> CITY </div>
+    </div>
+    
+        <!-- 1 LOGO -->
+          <div id="logo" class='' >
+            <div style="justify-content: center">
+              <img class='logo-cryptomurals' width='100%' height='100px' src="./resources/logo_cryptomurals.svg"
+                alt="logo cryptomurals" />
             </div>
           </div>
 
-          <div style=" margin: auto; color: white; text-decoration: underline; font-family: Monoton; " class=' city-layout'> CITY </div>
-
-        </div>
-        
-        <div id="logo"  class='' style="display: flex; justify-content: center; flex: 1">
-          <div style="justify-content: center"> <img class='logo-cryptomurals' width='100%' height='100px' src="./resources/logo_cryptomurals.svg" alt="logo cryptomurals" /> </div>
-        </div>
-
-        <div style=" position: fixed; top: 90px; left: 0px; width: 600px; z-index: 999" class="menu-main hidden">
-          <div class='options-menu'>Home</div>
-          <div class='options-menu'><a href="https://gardens.1hive.org/#/matic/garden/0x963d4a1cd9fb345a624e46c9470df572f0b35a72" target="_blank">Join the DAO</a></div>
-          <div class='options-menu'><a href="Whitepaper_CRYPTOMURALS_v1_2022.pdf" target="_blank">WHITE PAPER</a></div>
-          <!-- <div class='options-menu'>About</div> -->
-        </div>
-      </div>
+          <!-- 2 LOGIN/OUT -->
+            <div id='logbutton' style=" display: flex; flex-direction: row; margin: 0 auto; justify-content: flex-end; text-align: center;">
+              <div id="logg" style="align-self: center; width: auto" class='btn-connect-container'>
+                <button style=" border-radius: 25px; border: none; font-family: Monda; background-Image: linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgba(250,4,254,1) 90%); color: white; word-spacing: 5px;" class='btn-connect-wallet' 
+                onclick="login()"> Connect Wallet </button>
+              </div>
+          </div>
 
 
-      <!-- LOGIN/OUT -->
-        <div id='logbutton' style=" display: flex; flex-direction: row; margin: 0 auto; justify-content: flex-end; text-align: center;">
-        <div id="logg" style="align-self: center; width: auto" class='btn-connect-container'>
-          <button style=" border-radius: 25px; border: none; font-family: Monda; background-Image: linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgba(250,4,254,1) 90%); color: white; word-spacing: 5px;" class='btn-connect-wallet' 
-          onclick="login()"> Connect Wallet </button>
-
-        </div>
-      </div>
     </div>
 
 
-    <main id='main' class='mn' style="height: 100%; flex-direction: column; display: flex">
+
+    <main id="main" class='mn' style="height: 100%; flex-direction: column; display: flex">
       <div style="display: flex; flex: 1">
         <div style="margin: auto">
           <div class="white-grad">
-            <div style="
-                        margin: 0px auto;
-                        text-align: center;
-                        justify-content: center;
-                        display: flex;
-                        height: 100%;
-                        align-items: center;
-                        color: white;
-                        font-size: 30px;
-                        display: flex;
-                        flex-direction: column;
-                      ">
+            <div style=" margin: 0px auto; text-align: center; justify-content: center; display: flex; height: 100%; align-items: center; color: white; font-size: 30px; display: flex; flex-direction: column; ">
               <div class="circle-main-container-first">
-                <div style="
-                              font-family: Monoton;
-                              display: flex;
-                              word-spacing: 10px;
-                            " class='circle-main'>
-                  DISCOVER THE
-                  <br />
-                  MURALS OF
-                </div>
+                <div style=" font-family: Monoton; display: flex; word-spacing: 10px; " class='circle-main'> DISCOVER THE <br /> MURALS OF </div>
                 <div style="position: relative; min-width: 240px">
-                  <div style="
-                                border: 2px solid #c2c2c2;
-                                background-color: #525252;
-                                border-radius: 25px;
-                                padding-right: 10px;
-                                padding-left: 10px;
-                                display: flex;
-                                flex-direction: row;
-                              " onclick="showOptionsCity()">
-                    <div style="
-                                  flex: 1;
-                                  font-family: Monoton;
-                                  color: #1ae2bd;
-                                " class='circle-select'>
-                      THE WORLD
-                    </div>
+                  <div style=" border: 2px solid #c2c2c2; background-color: #525252; border-radius: 25px; padding-right: 10px; padding-left: 10px; display: flex; flex-direction: row; " onclick="showOptionsCity()">
+                    <div style=" flex: 1; font-family: Monoton; color: #1ae2bd; " class='circle-select'> THE WORLD </div>
                     <div style="fontSize: 14px; align-self: center">&#9660;</div>
                   </div>
                   <div class="options-city-container">
                   </div>
                 </div>
-                <div style="
-                              font-family: Monoton;
-                              word-spacing: 10px;
-                            " class='circle-main'>
-                  & COLLECT THEM
-                </div>
+                <div style=" font-family: Monoton; word-spacing: 10px; " class='circle-main'> & COLLECT THEM </div>
               </div>
-              <div style="
-                            font-family: Monoton;
-                            flex-direction: column;
-                            word-spacing: 10px;
-                          " class='circle-main circle-main-container-second hidden'>
-                WELCOME TO
-                <br />
-                <div class="city-circle"></div>
-                <br />
+              <div style=" font-family: Monoton; flex-direction: column; word-spacing: 10px; " class='circle-main circle-main-container-second hidden'> WELCOME TO <br /> <div class="city-circle"></div> <br />
                 <!-- <a style="font-family: Monda;letter-spacing: 3px;" class='link-city' href="/gallery"> -->
-                  <p style="font-family: Monda;letter-spacing: 3px;" class='link-city' >
-                  COMING SOON!
-                  </p>
+                  <p style="font-family: Monda;letter-spacing: 3px;" class='link-city' > COMING SOON! </p>
                 <br>
                 <a href="https://gardens.1hive.org/#/matic/garden/0x963d4a1cd9fb345a624e46c9470df572f0b35a72" target="_blank">Join the DAO</a>
 
@@ -222,26 +211,39 @@
       </div>
 
     </main>
-  </div>
+  <!-- </div> -->
   <script>
     const _btnHamburguerMenu = document.querySelector('.hamburguer-menu');
     const menuMain = document.querySelector('.menu-main');
-    const main = document.querySelector('.mn');
     const cities = ['THE WORLD','PARIS', 'ROMA'];
     let city = 'THE WORLD';
     let resolutionSmall = false;
     let showOptions = false;
     
+    // effect
 
+    // const main = document.querySelector('.mn');
+
+    
     _btnHamburguerMenu.addEventListener('click', (e) => {
       console.log('nav clicked');
       _btnHamburguerMenu.classList.toggle('is-active');
+      
       menuMain.classList.toggle('hidden');
 
-      // EFFECT
-    logo.classList.toggle('navIsOpen');
+      // $("li").velocity("transition.slideLeftIn", { stagger: 250, drag: true });
+
+      // menuMain.classList.toggle('animate__fadeInLeft');
+      // menuMain.classList.add('animate__animated', 'animate__fadeInLeft');
+      // animateCSS('.menu-main', 'bounce');
+
+      // effect
+      // navContainer.classList.toggle('navIsOpen');
+      logo.classList.toggle('navIsOpen');
       logbutton.classList.toggle('navIsOpen');
       main.classList.toggle('navIsOpen');
+      // main.classList.toggle('navIsOpen');
+
 
     });
 
@@ -294,12 +296,22 @@ async function login() {
   let user = Moralis.User.current();
   if (!user) {
     try {
-      let user = await Moralis.authenticate({ signingMessage: "Hello from cryoptomurals!" })
+      let user = await Moralis.authenticate({
+        signingMessage: "Hello from cryoptomurals!"
+      })
       let userAddress = user.get('ethAddress');
+
       var x = userAddress;
+      // var shortAddr = x.substring(0, 8) + "...";
       var shortAddr = x.substring(0, 6) + "..."+x.substring(38, 42);
- 
-      document.getElementById("logg").innerHTML=`  <div style="width:auto;height: 50px" class="" onclick="logOut()">
+
+      // document.getElementById("logg").innerHTML = "<p class='loged btn-grad-inv'>" + shortAddr + " <i class='logout fa fa-sign-out' aria-hidden='true' onclick='event.stopPropagation();logOut()'></i> </p> <p style='display:none' class='responsiveloged btn-grad-inv'> <i class='logout fa fa-sign-out' aria-hidden='true' onclick='event.stopPropagation();logOut()'></i> </p>";
+
+      // document.getElementById("logg").innerHTML=`  <div style="width:auto;height: 50px" class="" onclick="logOut()">
+      //       <div style="border-radius: 50%; background-image: linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgba(250,4,254,1) 90%); color: white;" class='btn-connected'></div>
+      //       <div style="font-family:Monda; color: white"> ${shortAddr}</div>
+      //     </div>`
+          document.getElementById("logg").innerHTML=`  <div style="width:auto;height: 50px" class="" onclick="logOut()">
             <div id='addrCont' style="border-radius: 50%; background-image: linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgba(250,4,254,1) 90%); color: white;" class='btn-connected'>
               <div id='addr' style="font-family:Monda; color: white"> ${shortAddr}</div>
               </div>
@@ -315,18 +327,21 @@ async function login() {
     Moralis.enableWeb3(); //if user has a sesion authenticate is not called so metamaks is not initiated, here we fix this
     let userAddress = user.get('ethAddress');
     var x = userAddress;
+    // var shortAddr = x.substring(0, 8) + "...";
     var shortAddr = x.substring(0, 6) + "..."+x.substring(38, 42);
     document.getElementById("logg").innerHTML=`  <div style="width:auto;height: 50px" class="" onclick="logOut()">
             <div id='addrCont' style="border-radius: 50%; background-image: linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgba(250,4,254,1) 90%); color: white;" class='btn-connected'>
               <div id='addr' style="font-family:Monda; color: white"> ${shortAddr}</div>
               </div>
           </div>`
+
   }
 }
 
 // LOGOUT
 async function logOut() {
   await Moralis.User.logOut();
+  // document.getElementById("logg").innerHTML = `<button  class="btn-grad"   onclick="login();">Connect</button>`;
   document.getElementById("logg").innerHTML = `  <button style=" border-radius: 25px; border: none; font-family: Monda; background-Image: linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgba(250,4,254,1) 90%); color: white; word-spacing: 5px;" class='btn-connect-wallet' 
           onclick="login()"> Connect Wallet </button>`
   console.log("logged out");
@@ -418,6 +433,18 @@ async function logOut() {
 
       const navLayout = document.querySelector('.nav-layout');
       console.log(navLayout.style.flexDirection);
+      // // const _containerBtnConnect = document.querySelector('.btn-connect-container');
+      // const _btnDisconnectWallet = document.querySelector(
+      //   '.btn-disconnect'); //width: navPosition && city === 'THE WORLD' ? 200 : 'auto',
+      // if (resolutionSmall && city === 'THE WORLD') {
+      //   navLayout.style.flexDirection = 'column';
+      //   _btnDisconnectWallet.style.width = '200px';
+      //   _containerBtnConnect.style.width = '200px';
+      // } else {
+      //   navLayout.style.flexDirection = 'row';
+      //   _btnDisconnectWallet.style.width = 'auto';
+      //   _containerBtnConnect.style.width = 'auto';
+      // }
     }
 
     resizeWindow();
