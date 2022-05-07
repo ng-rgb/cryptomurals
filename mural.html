@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRYPTOMURALS</title>
+    <link rel="icon" href="./resources/favicon.ico" />
+    <link rel="stylesheet" href="./navBar.css">
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./hamburger.css">
+    <link rel="stylesheet" href="./gallery.css">
+    <link rel="stylesheet" href="./mural.css">
+    <style>
+        /* fixes */
+        /* .mcontent.isOpen  */
+        /* #navContainer, #main{ */
+        #logo, #logbtutton, #main{
+            transition: transform 0.3s;
+        }
+
+        #navContainer{
+            display: grid;
+            grid-template-columns: 1fr repeat(3, auto) 1fr;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-column-gap: 5px;
+            justify-items: center;
+            grid-template-areas: "city logo logbutton";
+        }
+    
+        #city{
+          grid-area: city;
+        }
+        #logo{
+          grid-area: logo;
+        }
+        #logbutton{
+          grid-area: logbutton;
+        }
+    
+       .navIsOpen{
+            transform: scale(0.8);
+            opacity: 0.6;
+            transition: transform 0.3s;
+        }
+        #main-navbar{
+          width: 100vw!important;
+          overflow:hidden;       
+        }
+        
+        #addr{
+            font-size: 0.81em;
+            margin-left: 30px;
+            margin-right: 30px;
+            line-height: 80px;
+        }
+
+        #addrCont{
+          width:100%
+        }
+
+        @media (max-width: 768px){
+            #navContainer{
+                flex-direction:column!important;
+            }
+
+            .hamburguer-menu-container{
+                position: absolute;
+                top: 40px;
+            }
+            
+            #addr{
+                    line-height: 42px;
+            }
+        }
+      </style>
+</head>
+<body>
+  <main>
+    <!-- MENU -->
+    <div style="display: inline-flex;flex: 1" class="menu">
+      
+          <!-- 1 icono y city -->
+          <!-- <div style="display: flex" class='hamburguer-menu-container'>
+            <div style="align-self: center; width: 100px;" class='hamburger hamburger--vortex-r hamburguer-menu'>
+              <div class='hamburger-box'>
+                <div class='hamburger-inner'></div>
+              </div>
+            </div>
+            <div style=" margin: auto; color: white; text-decoration: underline; font-family: Monoton; " class='mn city-layout'> CITY </div>
+          </div> -->
+    
+        <!-- 2 menu contents -->
+          <div style=" position: fixed; top: 90px; left: 0px; width: 600px; z-index: 999" class="menu-main hidden">
+            <div class='options-menu'>Home</div>
+            <div class='options-menu'><a href="https://gardens.1hive.org/#/matic/garden/0x963d4a1cd9fb345a624e46c9470df572f0b35a72" target="_blank">Join the DAO</a></div>
+            <div class='options-menu'><a href="Whitepaper_CRYPTOMURALS_v1_2022.pdf" target="_blank">WHITE PAPER</a></div>
+          </div>
+    
+    </div>
+    
+    
+    <!-- HEAD -->
+      <!-- <div id="main-navbar"> -->
+       
+      <div  id='navContainer'  class=''>
+    
+        <div id="city" style="display: flex" class='hamburguer-menu-container'>
+          <div style="align-self: center; width: 100px;" class='hamburger hamburger--vortex-r hamburguer-menu'>
+            <div class='hamburger-box'>
+              <div class='hamburger-inner'></div>
+            </div>
+          </div>
+          <div style=" margin: auto; color: white; text-decoration: underline; font-family: Monoton; " class='mn city-layout'> CITY </div>
+        </div>
+        
+            <!-- 1 LOGO -->
+              <div id="logo" class='' >
+                <div style="justify-content: center">
+                  <img class='logo-cryptomurals' width='100%' height='100px' src="./resources/logo_cryptomurals.svg"
+                    alt="logo cryptomurals" />
+                </div>
+              </div>
+    
+              <!-- 2 LOGIN/OUT -->
+                <div id='logbutton' style=" display: flex; flex-direction: row; margin: 0 auto; justify-content: flex-end; text-align: center;">
+                  <div id="logg" style="align-self: center; width: auto" class='btn-connect-container'>
+                    <button style=" border-radius: 25px; border: none; font-family: Monda; background-Image: linear-gradient(90deg, rgba(46,167,227, 1) 0%, rgba(46, 167,227,1) 10%, rgba(250,4,254,1) 90%); color: white; word-spacing: 5px;" class='btn-connect-wallet' 
+                    onclick="login()"> Connect Wallet </button>
+                  </div>
+              </div>
+    
+    
+        </div>
+            <div
+                style="display: flex;flex: 1;width: 100%; padding-left: 10px; padding-right: 10px;"
+                class="main-container"
+            >
+
+            </div>
+            <script type="module" src="./js/CustomViewer.js"></script>
+            <script>
+                var url = new URL(location.toString());
+                var idMural = url.searchParams.get("mural");
+
+                var dataMural = {
+                  name: "NAME OF THE PAINT",
+                  artist: "Damian Walter",
+                  date: new Date(),
+                  description: "",
+                  price: 1,
+                  crypto: 'ETH',
+                  coords: { lat: "-4.7435", lng: "68.4234" },
+                  urlEtherScan: '',
+                  urlIPFS: '',
+                  urlRarible: '',
+                  owner: "Rain Dahl"
+                }
+
+                window.addEventListener('resize', () => {
+                  console.log('resized to: ', window.innerWidth, ', x: ', window.innerHeight);
+                  render();
+                });
+
+                window.addEventListener("DOMContentLoaded", () => {
+                  render();
+                })
+
+                function render(){
+                  let _mainContainer = document.querySelector(".main-container");
+                  if(window.innerWidth < 768){
+                    _mainContainer.innerHTML = `
+                      <div style="padding: 20">
+                        <div
+                          style="
+                            aspect-ratio: 1;
+                            position: relative;
+                            width: 100%;
+                            margin: 0 auto;
+                          "
+                          class="circle-grad"
+                        >
+                          <div
+                            style="
+                              position: absolute;
+                              color: #01deb5;
+                              font-family: Monoton;
+                              font-size: 43px;
+                              top: 20px"
+                          >
+                           ${dataMural.name}
+                          </div>
+                        </div>
+                        <div
+                          style="
+                            flex: 1;
+                            margin-top: 20px;
+                            align-items: flex-end;
+                            justify-items: flex-end;
+                            display: flex;
+                            flex-direction: column;
+                          "
+                        >
+                          <button
+                            style="
+                              border: none;
+                              fontFamily: Monoton;
+                              font-size: 23px;
+                              color: white;
+                              background: #ffffff00;
+                              align-self: flex-end;
+                            "
+                            class="btn-buy-grad"
+                          >
+                            BUY / BID
+                          </button>
+                          <div
+                            style="
+                              font-family: Monda;
+                              color: white;
+                              font-size: 20px;
+                              background-color: #767676;
+                              border-radius: 10px;
+                              text-align: center;
+                              width: 100px;
+                              margin-top: 20px;
+                            "
+                          >
+                            _ Share
+                          </div>
+                        </div>
+                        <div>
+                          <p style="color: white; font-size: 17px; font-family: Monda">
+                            When you buy this NFT you support 4 parts: The artist, motion
+                            designer, a cause and the murals project
+                          </p>
+                        </div>
+                        <div>
+                          <p
+                            style="
+                              font-weight: bold;
+                              color: white;
+                              font-size: 14;
+                              font-family: Monda;
+                              margin: 0;
+                            "
+                          >
+                            ${dataMural.name}
+                          </p>
+                          <p
+                            style="
+                              color: white;
+                              font-size: 14px;
+                              font-family: Monda;
+                              margin: 0;
+                            "
+                          >
+                            Motion design by @serial_looper
+                          </p>
+                          <p
+                            style="
+                              color: white;
+                              font-size: 14px;
+                              font-family: Monda;
+                              margin: 0;
+                            "
+                          >
+                            Ed. 1/1
+                          </p>
+                        </div>
+                        <div>
+                          <p style="font-family: Monda; color: white; font-size: 14px">
+                            <tb/>Owner: <strong>${dataMural.owner}</strong>
+                          </p>
+                          <p style="font-family: Monda; color: white; font-size: 14px">
+                            <tb/>Coord: { longitude: <strong>${dataMural.coords.lng}</strong> latitude: <strong>${dataMural.coords.lat}</strong> }
+                          </p>
+                        </div>
+                        <div style="display: flex; flex-direction: row">
+                          <div style="flex: 1">
+                            <p
+                              style="
+                                font-weight: bold;
+                                font-family: Monda;
+                                font-size: 23px;
+                                color: white;
+                                margin: 0;
+                              "
+                            >
+                              Reserve price
+                            </p>
+                            <p
+                              style="
+                                font-weight: bold;
+                                font-family: Monda;
+                                font-size: 23px;
+                                color: white;
+                                margin: 0px;
+                              "
+                            >
+                              ${dataMural.price} ${dataMural.crypto}
+                            </p>
+                          </div>
+                          <div
+                            style="
+                              color: #000000;
+                              font-family: Monoton;
+                              font-size: 20px;
+                              background: linear-gradient(to right, rgba(121, 245, 173, 1), rgba(11, 205, 247, 1));
+                              width: 200px;
+                              height: 50px;
+                              border-radius: 20px;
+                              text-align: center;
+                              margin: 10px;
+                              display: flex;
+                            "
+                          >
+                            <div style="margin:auto">DISCOVER +</div>
+                          </div>
+                        </div>
+                      </div>`
+                  } else {
+                    _mainContainer.innerHTML = `
+                      <div style="display: flex; flex: 1; margin: auto">
+                        <div
+                          style="
+                            display: 'grid',
+                            grid-template-columns: minmax(350px, 1fr) 1fr;
+                            gap: 0;
+                          "
+                        >
+                          <div style="margin: 0 auto; width: 100%; height: 100%">
+                            <div
+                              style="
+                                aspectRatio: 1;
+                                position: relative;
+                                width: 100%;
+                                height: 100%;
+                                margin: 0 auto;
+                              "
+                              class='circle-grad'
+                            >
+                              <div
+                                style="
+                                  position: absolute;
+                                  color: #01deb5;
+                                  font-family: Monoton;
+                                  font-size: 45px;
+                                  top: 20px;
+                                "
+                              >
+                                ${dataMural.name}
+                              </div>
+                            </div>
+                          </div>
+                          <div style="padding-left: 20px">
+                            <p
+                              style="color: white; font-size: 17px; font-family: Monda">
+                              When you buy this NFT you support 4 parts: The artist, motion
+                              designer, a cause and the murals project
+                            </p>
+                            <div>
+                              <p
+                                style="
+                                  color: white;
+                                  font-size: 23px;
+                                  font-family: Monda;
+                                  margin: 0px;
+                                "
+                              >
+                                ${dataMural.name}
+                              </p>
+                              <p
+                                style="
+                                  color: white;
+                                  font-size: 23px;
+                                  fontFamily: Monda;
+                                  margin: 0px;
+                                "
+                              >
+                                Motion design by @serial_looper
+                              </p>
+                              <p
+                                style="
+                                  color: white;
+                                  font-size: 23px;
+                                  font-family: Monda;
+                                  margin: 0px;
+                                "
+                              >
+                                Ed. 1/1
+                              </p>
+                            </div>
+                            <div>
+                              <p style="font-family: Monda; color:white">
+                                Owner: <strong>${dataMural.owner}</strong>
+                              </p>
+                              <p style="font-family: Monda; color: white">
+                                Coord: { longitude: <strong>${dataMural.coords.lng}</strong> latitude: <strong>${dataMural.coords.lat}</strong> }
+                              </p>
+                            </div>
+                            <div>
+                              <p
+                                style="
+                                  font-weight: bold;
+                                  font-family: Monda;
+                                  font-size: 23px;
+                                  color: white;
+                                  margin: 0,
+                                "
+                              >
+                                Reserve price
+                              </p>
+                              <p
+                                style="
+                                  font-weight: bold;
+                                  font-family: Monda;
+                                  font-size: 23px;
+                                  color: white;
+                                  margin: 0;
+                                "
+                              >
+                                ${dataMural.price} ${dataMural.crypto}
+                              </p>
+                            </div>
+                            <div style="display: flex; flex-direction: row">
+                              <div style="flex: 1; margin-top: 20px">
+                                <button
+                                  style="
+                                    border: none;
+                                    font-family: Monoton;
+                                    font-size: 23px;
+                                    color: white;
+                                    background: #ffffff00;
+                                  "
+                                  class='btn-buy-grad'
+                                >
+                                  BUY / BID
+                                </button>
+                                <div
+                                  style="
+                                    font-family: Monda;
+                                    color: white;
+                                    fontSize: 20px;
+                                    background-color: #767676;
+                                    border-radius: 10px;
+                                    text-align: center;
+                                    width: 100px;
+                                    margin-top: 20px;
+                                  "
+                                >
+                                  _ Share
+                                </div>
+                              </div>
+                              <div
+                                style="
+                                  display: flex;
+                                  flex-direction: column;
+                                  margin: 10px;
+                                  margin-right: 0px;
+                                "
+                              >
+                                <a
+                                  style="
+                                    color: white;
+                                    font-family: Monda;
+                                    font-size: 20px;
+                                    text-decoration-line: underline;
+                                  "
+                                  href=${dataMural.urlEtherScan}
+                                >
+                                  View on etherscan
+                                </a>
+                                <a
+                                  style="
+                                    color: white;
+                                    font-family: Monda;
+                                    font-size: 20px;
+                                    text-decoration-line: underline;
+                                  "
+                                  href=${dataMural.urlRarible}
+                                >
+                                  View on Rarible.com
+                                </a>
+                                <a
+                                  style="
+                                    color: white;
+                                    font-family: Monda;
+                                    font-size: 20px;
+                                    text-decoration-line: underline;
+                                  "
+                                  href=${dataMural.urlIPFS}
+                                >
+                                  View on IPFS
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        style="
+                          color: #000000;
+                          fontFamily: Monoton;
+                          fontSize: 20px;
+                          background: linear-gradient(to right, rgba(121, 245, 173, 1), rgba(11, 205, 247, 1));
+                          width: 200px;
+                          height: 50px;
+                          borderRadius: 20px;
+                          textAlign: center;
+                          margin: 10px;
+                          marginLeft: 100px;
+                          display: flex;
+                        "
+                      >
+                        <div style="margin: auto">DISCOVER+</div>
+                      </div>`;
+                  }
+                }
+            </script>
+        </main>   
+</body>
