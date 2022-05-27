@@ -160,11 +160,11 @@
                 <div style=" font-family: Monoton; word-spacing: 10px; " class='circle-main'> & COLLECT THEM </div>
               </div>
               <div style=" font-family: Monoton; flex-direction: column; word-spacing: 10px; " class='circle-main circle-main-container-second hidden'> WELCOME TO <br /> <div class="city-circle"></div> <br />
-                <!-- <a style="font-family: Monda;letter-spacing: 3px;" class='link-city' href="/gallery"> -->
-                  <p style="font-family: Monda;letter-spacing: 3px;" class='link-city' > COMING SOON! </p>
+
+                    <a style="font-family: Monda;letter-spacing: 3px;" class='link-city'>Click to discover the MURALS</a>
                 <br>
                 <a href="https://gardens.1hive.org/#/matic/garden/0x963d4a1cd9fb345a624e46c9470df572f0b35a72" target="_blank">Join the DAO</a>
-
+                <!--<a style="font-family: Monda;letter-spacing: 3px;" class='link-city' href="/gallery"></a>-->
               </div>
             </div>
           </div>
@@ -406,7 +406,6 @@ async function logOut() {
         // _community.classList.add('content-unlock-hidden');
 
 
-
       } else {
         _logoMenu.classList.add('hidden');
         _circle.classList.remove('white-grad-select');
@@ -418,6 +417,9 @@ async function logOut() {
         var _cityCircle = document.querySelector('city-circle');
         _cityCircle.textContent = city;
       }
+
+      const _linkCity = document.querySelector('.link-city');
+      _linkCity.href = `/gallery.html?id=${index}`;
     }
 
     window.addEventListener('resize', (e) => {
