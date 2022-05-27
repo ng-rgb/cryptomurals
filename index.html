@@ -140,6 +140,7 @@
                                 padding-left: 10px;
                                 display: flex;
                                 flex-direction: row;
+                                cursor: pointer;
                               " onclick="showOptionsCity()">
                     <div style="
                                   flex: 1;
@@ -169,12 +170,11 @@
                 <br />
                 <div class="city-circle"></div>
                 <br />
-                <!-- <a style="font-family: Monda;letter-spacing: 3px;" class='link-city' href="/gallery"> -->
-                  <p style="font-family: Monda;letter-spacing: 3px;" class='link-city' >
-                  COMING SOON!
-                  </p>
-                <br>
-                <a href="https://gardens.1hive.org/#/matic/garden/0x963d4a1cd9fb345a624e46c9470df572f0b35a72" target="_blank">Join the DAO</a>
+                <a style="font-family: Monda;letter-spacing: 3px;" class='link-city' href="/gallery.html">
+                  ENTER</a>
+                  <!-- <p style="font-family: Monda;letter-spacing: 3px;" class='link-city' > COMING SOON! </p> -->
+                <!-- <br> -->
+                <!-- <a href="https://gardens.1hive.org/#/matic/garden/0x963d4a1cd9fb345a624e46c9470df572f0b35a72" target="_blank">Join the DAO</a> -->
 
               </div>
             </div>
@@ -194,7 +194,7 @@
       <!-- SOCIAL ICONS -->
       <div class='container-icon-social-networks'>
         <div>
-          <a href="https://www.instagram.com/cryptomurals/" target="_blank">
+          <a href="https://www.twitter.com/cryptomurals/" target="_blank">
           <img width="24px" height="24px" color="white" src='./resources/twitter-brands.svg'
             style="margin: 10px; left: 0px" class='icon-social-networks' />
 </a>          
@@ -294,7 +294,7 @@ async function login() {
   let user = Moralis.User.current();
   if (!user) {
     try {
-      let user = await Moralis.authenticate({ signingMessage: "Hello from cryoptomurals!" })
+      let user = await Moralis.authenticate({ signingMessage: "Hello from cryptomurals!" })
       let userAddress = user.get('ethAddress');
       var x = userAddress;
       var shortAddr = x.substring(0, 6) + "..."+x.substring(38, 42);

@@ -1,0 +1,51 @@
+.circle-grad {
+    color: #313149;
+    margin: 0;
+    position: relative;
+    z-index: 0;
+    max-height: 500px;
+    max-width: 500px;
+    background-image: radial-gradient(
+      circle,
+      rgba(31, 137, 151, 1) 0%,
+      rgba(40, 52, 107, 1) 61%
+    );
+    border-radius: 50%;
+    border: 1px solid #73747d;
+  }
+  
+  .btn-buy-grad {
+    color: #313149;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+    margin: 0;
+    position: relative;
+    z-index: 0;
+    background: linear-gradient(
+      to right,
+      rgba(121, 245, 173, 1),
+      rgba(11, 205, 247, 1)
+    );
+    border-radius: 25%;
+  }
+  
+  .btn-buy-grad:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 4px;
+    border-radius: 30px;
+    background: linear-gradient(
+      to right,
+      rgba(121, 245, 173, 1),
+      rgba(11, 205, 247, 1)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  
