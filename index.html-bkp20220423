@@ -97,7 +97,7 @@
       <div style=" position: fixed; top: 90px; left: 0px; width: 600px; z-index: 999" class="menu-main hidden">
         <div class='options-menu'>Home</div>
         <div class='options-menu'><a href="https://gardens.1hive.org/#/matic/garden/0x963d4a1cd9fb345a624e46c9470df572f0b35a72" target="_blank">Join the DAO</a></div>
-        <div class='options-menu'><a href="Whitepaper_CRYPTOMURALS_v1_2022.pdf" target="_blank">WHITE PAPER</a></div>
+        <div class='options-menu'><a href="" target="_blank">WHITEPAPER - WIP</a></div>
       </div>
 
 </div>
