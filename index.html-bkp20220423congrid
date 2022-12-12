@@ -99,7 +99,7 @@
 
     <!-- 2 menu contents -->
       <div style=" position: fixed; top: 90px; left: 0px; width: 600px; z-index: 999" class="menu-main hidden">
-        <div class='options-menu'><a href="https://cryptomurals.xyz/" target="_blank">Home</div>
+        <div class='options-menu'><a href="https://cryptomurals.xyz/">Home</div>
         <div class='options-menu'><a href="https://giveth.io/project/cryptomurals-street-art-is-a-public-good" target="_blank">SUPPORT ON GIVETH</a></div>
         <div class='options-menu'><a href="https://www.notion.so/cryptomurals/Cryptomurals-Whitepaper-V3-0-971f7be84b444189a045e82ca9b438cf" target="_blank">WHITEPAPER</a></div>
        <div class='options-menu'><a href="https://cryptomurals.doingud.com/">STREET ART HUNT @ DEVCON VI</a></div>
