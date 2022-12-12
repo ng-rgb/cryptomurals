@@ -99,10 +99,12 @@
 
     <!-- 2 menu contents -->
       <div style=" position: fixed; top: 90px; left: 0px; width: 600px; z-index: 999" class="menu-main hidden">
-        <div class='options-menu'>Home</div>
-        <div class='options-menu'><a href="https://gardens.1hive.org/#/matic/garden/0x963d4a1cd9fb345a624e46c9470df572f0b35a72" target="_blank">Join the DAO</a></div>
-        <div class='options-menu'><a href="Whitepaper_CRYPTOMURALS_v1_2022.pdf" target="_blank">WHITE PAPER</a></div>
-      </div>
+        <div class='options-menu'><a href="https://cryptomurals.xyz/" target="_blank">Home</div>
+        <div class='options-menu'><a href="https://giveth.io/project/cryptomurals-street-art-is-a-public-good" target="_blank">SUPPORT ON GIVETH</a></div>
+        <div class='options-menu'><a href="https://www.notion.so/cryptomurals/Cryptomurals-Whitepaper-V3-0-971f7be84b444189a045e82ca9b438cf" target="_blank">WHITEPAPER</a></div>
+       <div class='options-menu'><a href="https://cryptomurals.doingud.com/">STREET ART HUNT @ DEVCON VI</a></div>
+       <div class='options-menu'><a href="https://lenster.xyz/u/cryptomurals" target="_blank">Join us! cryptomurals.lens</a></div>
+     </div>
 
 </div>
 
@@ -124,8 +126,10 @@
         <!-- 1 LOGO -->
           <div id="logo" class='' >
             <div style="justify-content: center">
-              <img class='logo-cryptomurals' width='100%' height='100px' src="./resources/logo_cryptomurals.svg"
-                alt="logo cryptomurals" />
+             <a href="https://cryptomurals.xyz/" target="_blank">
+               <img class='logo-cryptomurals' width='100%' height='100px' src="./resources/logo_cryptomurals.svg"
+                alt="logo cryptomurals" /> </a>
+             
             </div>
           </div>
 
@@ -148,7 +152,7 @@
           <div class="white-grad">
             <div style=" margin: 0px auto; text-align: center; justify-content: center; display: flex; height: 100%; align-items: center; color: white; font-size: 30px; display: flex; flex-direction: column; ">
               <div class="circle-main-container-first">
-                <div style=" font-family: Monoton; display: flex; word-spacing: 10px; " class='circle-main'> DISCOVER THE <br /> MURALS OF </div>
+                <div style=" font-family: Monoton; display: flex; word-spacing: 10px; " class='circle-main'> UNLOCK THE <br /> MURALS OF </div>
                 <div style="position: relative; min-width: 240px">
                   <div style=" border: 2px solid #c2c2c2; background-color: #525252; border-radius: 25px; padding-right: 10px; padding-left: 10px; display: flex; flex-direction: row; " onclick="showOptionsCity()">
                     <div style=" flex: 1; font-family: Monoton; color: #1ae2bd; " class='circle-select'> THE WORLD </div>
@@ -157,7 +161,7 @@
                   <div class="options-city-container">
                   </div>
                 </div>
-                <div style=" font-family: Monoton; word-spacing: 10px; " class='circle-main'> & COLLECT THEM </div>
+                <div style=" font-family: Monoton; word-spacing: 10px; " class='circle-main'> & UNLOCK THE HISTORY </div>
               </div>
               <div style=" font-family: Monoton; flex-direction: column; word-spacing: 10px; " class='circle-main circle-main-container-second hidden'> WELCOME TO <br /> <div class="city-circle"></div> <br />
                 <!-- <a style="font-family: Monda;letter-spacing: 3px;" class='link-city' href="/gallery"> -->
