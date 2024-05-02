@@ -79,14 +79,14 @@
         </div>
         
         <div id="logo"  class='' style="display: flex; justify-content: center; flex: 1">
-          <div style="justify-content: center"> <img class='logo-cryptomurals' href="https://cryptomurals.xyz/" width='100%' height='100px' src="./resources/logo_cryptomurals.svg" alt="logo cryptomurals" /> </div>
+          <div style="justify-content: center"> <img class='logo-cryptomurals' <a href="https://cryptomurals.xyz/"> width='100%' height='100px' src="./resources/logo_cryptomurals.svg" alt="logo cryptomurals" /> </div>
         </div>
 
         <div style=" position: fixed; top: 90px; left: 0px; width: 600px; z-index: 999" class="menu-main hidden">
           <div class='options-menu'><a href="https://cryptomurals.xyz/" target="_blank">HOME</a></div>
           <div class='options-menu'><a href="https://giveth.io/project/cryptomurals-street-art-is-a-public-good" target="_blank">Support us on GIVETH</a></div>
           <div class='options-menu'><a href="https://www.notion.so/cryptomurals/Cryptomurals-Whitepaper-V3-0-971f7be84b444189a045e82ca9b438cf" target="_blank">Check our Whitepaper</a></div>
-          <div class='options-menu'><a href="https://ethglobal.com/showcase/cryptomurals-asuz3" target="_blank">Finalist Hackathon Web3Jam ETHGLOBAL</a></div>
+          <div class='options-menu'><a href="https://ethglobal.com/showcase/cryptomurals-asuz3" target="_blank">Finalist Hackathon ETHGlobal</a></div>
            <div class='options-menu'><a href="https://lenster.xyz/u/cryptomurals" target="_blank">@cryptomurals.lens</a></div>
           <!-- <div class='options-menu'>About</div> -->
         </div>
@@ -122,20 +122,11 @@
                       ">
               
               <div class="circle-main-container-first">
-                <div style="
-                              font-family: Monoton;
-                              display: flex;
-                              word-spacing: 10px;
-                            " class='circle-main'>
-                  
-                  DISCOVER THE
-                  <div/>
-                    <div style="
-                              font-family: Monoton;
-                              word-spacing: 10px;
-                            " class='circle-main'>
-                  MURALS OF
-                </div>
+                <div style="font-family: Monoton; display: flex; word-spacing: 10px;" class='circle-main'>
+                  <br/>
+                  DISCOVER BEST</div>
+                  <br/>
+                  MURALS OF</div>
                 
                 <div style="position: relative; min-width: 240px">
                   <div style="
@@ -147,37 +138,22 @@
                                 display: flex;
                                 flex-direction: row;
                                 cursor: pointer;
-                              " onclick="showOptionsCity()">
-                    <div style="
-                                  flex: 1;
-                                  font-family: Monoton;
-                                  color: #1ae2bd;
-                                " class='circle-select'>
-                      THE WORLD
-                    </div>
-                    
-                    <div style="font-size: 14px; align-self: center">&#9660;</div>
+                              " onclick="showOptionsCity()"> 
+                      <div style="flex: 1; font-family: Monoton; color: #1ae2bd;" class='circle-select'>THE WORLD</div>
+                      <div style="font-size: 14px; align-self: center">&#9660;</div>
                   </div>
-                  <div class="options-city-container">
-                  </div>
+                  <div class="options-city-container"></div>
                 </div>
                 
-                <div style="
-                              font-family: Monoton;
-                              word-spacing: 10px;
-                            " class='circle-main'>
+                <div style="font-family: Monoton; word-spacing: 10px;" class='circle-main'>
                   & UNLOCK THE HISTORY!
                 </div>
               </div>
-              <div style="
-                            font-family: Monoton;
-                            flex-direction: column;
-                            word-spacing: 10px;
-                          " class='circle-main circle-main-container-second hidden'>
+              <div style="font-family: Monoton; flex-direction: column; word-spacing: 10px;" class='circle-main circle-main-container-second hidden'>
                 WELCOME TO
-                <br />
+                <br/>
                 <div class="city-circle"></div>
-                <br />
+                <br/>
                 <a style="font-family: Monda;letter-spacing: 3px;" class='link-city' href="/gallery.html">
                   ENTER</a>
                   <!-- <p style="font-family: Monda;letter-spacing: 3px;" class='link-city' > COMING SOON! </p> -->
@@ -230,7 +206,7 @@
     const _btnHamburguerMenu = document.querySelector('.hamburguer-menu');
     const menuMain = document.querySelector('.menu-main');
     const main = document.querySelector('.mn');
-    const cities = ['THE WORLD','PARIS','BOGOTÁ','DENVER','MEDELLÍN','ROMA'];
+    const cities = ['THE WORLD','PARIS','BOGOTÁ','MEDELLÍN','ROMA'];
     let city = 'THE WORLD';
     let resolutionSmall = false;
     let showOptions = false;
